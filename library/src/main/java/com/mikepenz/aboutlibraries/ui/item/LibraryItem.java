@@ -112,45 +112,9 @@ public class LibraryItem extends AbstractItem<LibraryItem, LibraryItem.ViewHolde
 
 
         //Define onClickListener
-        if (!TextUtils.isEmpty(library.getAuthorWebsite())) {
-            holder.libraryCreator.setOnTouchListener(rippleForegroundListener);
-            holder.libraryCreator.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    boolean consumed = false;
-                    if (LibsConfiguration.getInstance().getListener() != null) {
-                        consumed = LibsConfiguration.getInstance().getListener().onLibraryAuthorClicked(view, library);
-                    }
-
-                    if (!consumed) {
-                        openAuthorWebsite(ctx, library.getAuthorWebsite());
-                    }
-                }
-            });
-            holder.libraryCreator.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    boolean consumed = false;
-                    if (LibsConfiguration.getInstance().getListener() != null) {
-                        consumed = LibsConfiguration.getInstance().getListener().onLibraryAuthorLongClicked(v, library);
-                    }
-
-                    if (!consumed) {
-                        openAuthorWebsite(ctx, library.getAuthorWebsite());
-                        consumed = true;
-                    }
-                    return consumed;
-                }
-            });
-        } else {
-            holder.libraryCreator.setOnTouchListener(null);
-            holder.libraryCreator.setOnClickListener(null);
-            holder.libraryCreator.setOnLongClickListener(null);
-        }
-
         if (!TextUtils.isEmpty(library.getLibraryWebsite()) || !TextUtils.isEmpty(library.getRepositoryLink())) {
             holder.libraryDescription.setOnTouchListener(rippleForegroundListener);
-            holder.libraryDescription.setOnClickListener(new View.OnClickListener() {
+            holder.card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     boolean consumed = false;
@@ -163,7 +127,7 @@ public class LibraryItem extends AbstractItem<LibraryItem, LibraryItem.ViewHolde
                     }
                 }
             });
-            holder.libraryDescription.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.card.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     boolean consumed = false;
