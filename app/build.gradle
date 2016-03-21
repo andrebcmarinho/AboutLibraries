@@ -77,3 +77,6 @@ dependencies {
     //https://github.com/mikepenz/Android-Iconics
     compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
 }
+
+tasks.withType(Javadoc).all { enabled = false }
+tasks.findByPath(":library:generateDebugJavadoc").enabled = false

@@ -43,3 +43,5 @@ dependencies {
     // https://github.com/mikepenz/FastAdapter
     compile 'com.mikepenz:fastadapter:1.2.5@aar'
 }
+
+tasks.withType(Javadoc).all { enabled = false }
